@@ -1,0 +1,46 @@
+//Raymond Chin 012754597
+//March 21, 2017
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+
+//main method
+public static void main(String[] args) {        
+
+    int []a = {2,13,8,38,63,11,4,1,3,9};
+    findSumPairs(a,72);        
+
+}
+
+//function finds pair that equals sum
+//first value is the array and second is the sum 
+public static void findSumPairs(int []input, int k){
+	//creates hash
+    Map<Integer, Integer> pairs = new HashMap<Integer, Integer>();
+    //sets flag in case you don't find a pair
+    boolean flag = true;
+    //iterates through array
+    for(int i=0;i<input.length;i++){
+    	//if it finds a pair that equals sum print it out
+        if(pairs.containsKey(input[i]))
+        {
+            System.out.println(input[i] +" + "+ pairs.get(input[i]) + " = " + k);
+            //finds pair so don't display if case
+            flag = false;
+        }
+       //associates array value with the value needed to equal sum
+        else
+         pairs.put(k-input[i], input[i]);
+        
+        	
+    }
+    //if case if no pair is found
+    if(flag == true)
+    {
+    	System.out.println("Target sum not found" + "(" + k + ")");
+    }
+    
+}
+}
